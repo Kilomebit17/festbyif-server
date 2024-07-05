@@ -45,7 +45,9 @@ export class TentsService {
   async leaveTent(userId: string, tentId: string): Promise<any> {
     const tent = await this.tentModel.findById(tentId).exec();
     if (tent) {
-      tent.users = tent.users.filter((user: any) => user._id !== userId);
+      tent.users = tent.users.filter(
+        (user: any) => user._id.toString() !== userId,
+      );
       return tent.save();
     }
     return null;

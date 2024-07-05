@@ -9,8 +9,6 @@ export class AuthService {
   constructor(@InjectModel(User.name) private userModel: Model<User>) {}
 
   async createUser(userDto: UserDto): Promise<any> {
-    console.log(userDto);
-
     const user = await this.userModel.create(userDto);
     return user;
   }

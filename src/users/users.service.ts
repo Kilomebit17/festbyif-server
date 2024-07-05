@@ -13,7 +13,7 @@ export class UsersService {
     if (!user) {
       throw new HttpException('User not found', HttpStatus.BAD_REQUEST);
     }
-    return user;
+    return { statusCode: HttpStatus.OK, user };
   }
 
   async allUsers(): Promise<any> {

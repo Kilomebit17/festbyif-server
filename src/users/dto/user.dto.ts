@@ -13,12 +13,6 @@ export class UserDto {
   @IsString()
   readonly last_name: string;
   @IsNotEmpty()
-  @IsString()
-  readonly photo_url: string;
-  @IsNotEmpty()
-  @IsBoolean()
-  readonly is_premium: boolean;
-  @IsNotEmpty()
   @IsBoolean()
   readonly isUserJoined: boolean;
 }
