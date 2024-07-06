@@ -30,15 +30,10 @@ export class TentsService {
     }
     return null;
   }
-  async getAllTents(userId: string): Promise<any> {
+  async getAllTents(): Promise<any> {
     const tents = await this.tentModel.find().populate('users').exec();
-    const findUserInTent = () => {
-      return tents.find((tent) => {
-        return tent.users.find((user) => user._id === userId);
-      });
-    };
+
     return {
-      isUserJoinedInTent: !!findUserInTent(),
       tents,
     };
   }

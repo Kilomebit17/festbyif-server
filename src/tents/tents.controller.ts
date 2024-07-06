@@ -18,8 +18,8 @@ export class TentsController {
   }
 
   @Get()
-  async getAllTents(@Body() userId: string) {
-    return this.tentsService.getAllTents(userId);
+  async getAllTents() {
+    return this.tentsService.getAllTents();
   }
 
   @Delete('leave')
