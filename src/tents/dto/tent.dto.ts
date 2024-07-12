@@ -4,6 +4,12 @@ export class TentDto {
   @IsString()
   readonly name: string;
   @IsNotEmpty()
+  @IsString()
+  readonly tentSex: string;
+  @IsNotEmpty()
+  @IsString()
+  readonly isFamilyTent: boolean;
+  @IsNotEmpty()
   @IsNumber()
   readonly tentIdx: number;
   @IsNotEmpty()

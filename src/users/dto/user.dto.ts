@@ -5,6 +5,9 @@ export class UserDto {
   readonly userFullName: string;
   @IsNotEmpty()
   @IsString()
+  readonly userSex: string;
+  @IsNotEmpty()
+  @IsString()
   readonly userTelegramId: string;
   @IsNotEmpty()
   @IsString()

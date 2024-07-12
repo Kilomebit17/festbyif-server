@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { HttpException, HttpStatus, Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Tents } from './schemas/tents.schema';
@@ -21,11 +21,25 @@ export class TentsService {
     const tent = await this.tentModel.findById(tentId).exec();
     if (tent) {
       const user = await this.userModel.findById(userId);
-      if (user) {
-        user.isUserJoined = true;
-        user.save();
-        tent.users.push(user);
-        return tent.save();
+      if (user.userSex === tent.tentSex) {
+        if (user) {
+          if (tent.users.length < tent.maximumMembersCount) {
+            user.isUserJoined = true;
+            user.save();
+            tent.users.push(user);
+            return tent.save();
+          } else {
+            throw new HttpException(
+              'Sorry maximum members in tent',
+              HttpStatus.BAD_REQUEST,
+            );
+          }
+        }
+      } else {
+        throw new HttpException(
+          'User sex is not avalible',
+          HttpStatus.BAD_REQUEST,
+        );
       }
     }
     return null;

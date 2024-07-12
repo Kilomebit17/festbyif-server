@@ -5,7 +5,9 @@ import { Prop, Schema, SchemaFactory } from '@nestjs/mongoose';
 })
 export class Tents {
   @Prop({ required: true }) name: string = '';
+  @Prop({ required: true }) tentSex: string = '';
   @Prop({ required: true }) tentIdx: number = 0;
+  @Prop({ required: true }) isFamilyTent: boolean = false;
   @Prop({ required: true }) maximumMembersCount: number = 8;
   @Prop() users: any[] = [];
 }
