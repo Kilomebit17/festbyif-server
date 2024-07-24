@@ -21,7 +21,7 @@ export class TentsService {
     const tent = await this.tentModel.findById(tentId).exec();
     if (tent) {
       const user = await this.userModel.findById(userId);
-      if (user.userSex === tent.tentSex) {
+      if (user.userSex === tent.tentSex || tent.tentSex === 'family') {
         if (user) {
           if (tent.users.length < tent.maximumMembersCount) {
             user.isUserJoined = true;
