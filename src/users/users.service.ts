@@ -18,6 +18,13 @@ export class UsersService {
 
   async allUsers(): Promise<any> {
     const users = await this.userModel.find().exec();
-    return users;
+    return {
+      countOfUsers: users.length,
+      users: users.map((users) => {
+        return {
+          name: `${users.first_name}`,
+        };
+      }),
+    };
   }
 }
