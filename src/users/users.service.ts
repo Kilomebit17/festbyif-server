@@ -22,7 +22,7 @@ export class UsersService {
       countOfUsers: users.length,
       users: users.map((users) => {
         return {
-          name: `${users.first_name}`,
+          name: `${users.userFullName}`,
         };
       }),
     };
